@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {connect} from "react-redux"
 import "./App.css";
 
 import NewChart from "./NewChart/NewChart";
@@ -20,7 +20,7 @@ class App extends Component {
 						</div>
 					</header>
           <div className="app__active-chart">
-            
+
           </div>
 				</main>
 			</div>
@@ -28,4 +28,12 @@ class App extends Component {
 	}
 }
 
-export default App;
+function mapStateToProps({activeChartIndex, charts}) {
+  return {
+		activeChart: charts[activeChartIndex]
+		,charts: charts
+	}
+}
+
+// export default App;
+export default connect(mapStateToProps)(App);
